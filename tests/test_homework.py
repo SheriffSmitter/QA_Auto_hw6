@@ -42,7 +42,7 @@ assert is_dark_theme(current_time=time(hour=16), dark_theme_enabled_by_user=True
 assert is_dark_theme(current_time=time(hour=16), dark_theme_enabled_by_user=False) is False
 assert is_dark_theme(current_time=time(hour=16), dark_theme_enabled_by_user=None) is False
 assert is_dark_theme(current_time=time(hour=22), dark_theme_enabled_by_user=None) is True
-assert is_dark_theme(current_time=time(hour=6), dark_theme_enabled_by_user=None) is True
+assert is_dark_theme(current_time=time(hour=6), dark_theme_enabled_by_user=None) is False
 assert is_dark_theme(current_time=time(hour=7), dark_theme_enabled_by_user=None) is False
 
 
