@@ -16,16 +16,12 @@ def test_dark_theme_by_time():
 
 
 def test_dark_theme_by_time_and_user_choice():
-    """
-    Протестируйте правильность переключения темной темы на сайте
-    в зависимости от времени и выбора пользователя
-    dark_theme_enabled_by_user = True - Темная тема включена
-    dark_theme_enabled_by_user = False - Темная тема выключена
-    dark_theme_enabled_by_user = None - Пользователь не сделал выбор (используется переключение по времени системы)
-    """
-
-    # TODO переключите темную тему в зависимости от времени суток,
-    #  но учтите что темная тема может быть включена вручную
+    assert is_dark_theme(current_time=time(hour=16), dark_theme_enabled_by_user=True) is True
+    assert is_dark_theme(current_time=time(hour=16), dark_theme_enabled_by_user=False) is False
+    assert is_dark_theme(current_time=time(hour=16), dark_theme_enabled_by_user=None) is False
+    assert is_dark_theme(current_time=time(hour=22), dark_theme_enabled_by_user=None) is True
+    assert is_dark_theme(current_time=time(hour=6), dark_theme_enabled_by_user=None) is False
+    assert is_dark_theme(current_time=time(hour=7), dark_theme_enabled_by_user=None) is False
 
 
 def is_dark_theme(current_time=time(hour=16), dark_theme_enabled_by_user=True):
@@ -36,14 +32,6 @@ def is_dark_theme(current_time=time(hour=16), dark_theme_enabled_by_user=True):
             return False
     else:
         return dark_theme_enabled_by_user
-
-
-assert is_dark_theme(current_time=time(hour=16), dark_theme_enabled_by_user=True) is True
-assert is_dark_theme(current_time=time(hour=16), dark_theme_enabled_by_user=False) is False
-assert is_dark_theme(current_time=time(hour=16), dark_theme_enabled_by_user=None) is False
-assert is_dark_theme(current_time=time(hour=22), dark_theme_enabled_by_user=None) is True
-assert is_dark_theme(current_time=time(hour=6), dark_theme_enabled_by_user=None) is False
-assert is_dark_theme(current_time=time(hour=7), dark_theme_enabled_by_user=None) is False
 
 
 def test_find_suitable_user():
